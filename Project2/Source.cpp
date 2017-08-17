@@ -1,82 +1,9 @@
 #include <iostream>
 #include <cassert>
+#include "Stack.h"
 using namespace std;
 
-class Stack
-{
-public:
-	Stack(int);
-	void push(int);
-	void pop();
-	int top();
-	bool isEmpty();
-	bool isFull();
 
-	//function to access the maxsize
-	int rtrnMaxSiz(){ return maxSize; }
-
-	//function to seasily traverse the array
-	int traverseStack(int i)
-	{
-		return stack[i];
-	}
-
-	//function to easily push in the middle
-	void pushMiddle(int x, int len)
-	{
-		stack[len / 2] = x;
-	}
-
-private:
-	int maxSize, *stack, stackTop;
-};
-
-Stack::Stack(int size)
-{
-	if (size <= 0)
-	{
-		cout << "Wrong size\n";
-		maxSize = 10;
-	}
-	else
-		maxSize = size;
-
-	stackTop = 0;
-	stack = new int[maxSize];
-}
-
-bool Stack::isEmpty()
-{
-	return (stackTop == 0);
-}
-
-bool Stack::isFull()
-{
-	return (stackTop == maxSize);
-}
-
-void Stack::push(int item)
-{
-	if (isFull())
-		cout << "Full stack" << endl;
-	else
-		stack[stackTop++] = item;
-}
-
-int Stack::top()
-{
-	assert(!isEmpty());
-
-	return stack[stackTop - 1];
-}
-
-void Stack::pop()
-{
-	if (isEmpty())
-		cout << "Empty stack" << endl;
-	else
-		stackTop--;
-}
 
 //copying from s1 to s2
 void copyStack(Stack s1, Stack s2)
